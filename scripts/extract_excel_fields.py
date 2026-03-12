@@ -1,5 +1,5 @@
 import openpyxl
-wb = openpyxl.load_workbook(r'D:\ShSchool02\DOCS\shahania_forms_catalog.xlsx')
+wb = openpyxl.load_workbook(r'/DOCS/shahania_forms_catalog.xlsx')
 for ws in wb.worksheets:
     print(f'--- Sheet: {ws.title} ---')
     for i, row in enumerate(ws.iter_rows(values_only=True)):

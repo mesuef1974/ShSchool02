@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CopilotDiffPersistence">
+    <option name="pendingDiffs">
+      <map>
+        <entry key="$PROJECT_DIR$/backend/audit/apps.py">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/backend/audit/apps.py" />
+              <option name="updatedContent" value="from django.apps import AppConfig&#10;&#10;class AuditConfig(AppConfig):&#10;    name = 'backend.audit'&#10;" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/backend/common/apps.py">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/backend/common/apps.py" />
+              <option name="updatedContent" value="from django.apps import AppConfig&#10;&#10;class CommonConfig(AppConfig):&#10;    name = 'backend.common'&#10;" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
