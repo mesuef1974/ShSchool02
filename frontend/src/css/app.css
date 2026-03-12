@@ -1,0 +1,13 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* RTL تحسينات بسيطة */
+html[dir="rtl"] .text-left { text-align: right; }
+html[dir="rtl"] .text-right { text-align: left; }
+
+/* ألوان وهوية الشحانية */
+:root { --brand:#8A1538; --accent:#39B54A; --info:#00AEEF; --txt:#2C3E50; }
+.btn-brand { @apply bg-[var(--brand)] text-white px-3 py-1 rounded; }
+.card { @apply bg-white rounded shadow p-4; }
