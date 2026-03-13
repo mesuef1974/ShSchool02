@@ -11,14 +11,6 @@
             </PendingDiffInfo>
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/backend/common/apps.py">
-          <value>
-            <PendingDiffInfo>
-              <option name="filePath" value="$PROJECT_DIR$/backend/common/apps.py" />
-              <option name="updatedContent" value="from django.apps import AppConfig&#10;&#10;class CommonConfig(AppConfig):&#10;    name = 'backend.common'&#10;" />
-            </PendingDiffInfo>
-          </value>
-        </entry>
       </map>
     </option>
   </component>
