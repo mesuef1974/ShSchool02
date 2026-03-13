@@ -1,26 +1,25 @@
+from django.contrib.auth.models import AbstractUser
 from django.db import models
-from backend.common.models import BaseFormFields
+import uuid
 
-class User(BaseFormFields):
-    username = models.CharField(max_length=64, unique=True)
-    email = models.EmailField(unique=True)
-    password = models.CharField(max_length=128)
-    is_active = models.BooleanField(default=True)
-    is_staff = models.BooleanField(default=False)
-    is_superuser = models.BooleanField(default=False)
+class User(AbstractUser):
+    """
+    Custom User model for Shahania School System.
+    Extends Django's AbstractUser to allow future customization.
+    """
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    
+    # Additional fields can be added here
+    is_teacher = models.BooleanField(default=False, verbose_name="معلم")
+    is_student = models.BooleanField(default=False, verbose_name="طالب")
+    is_parent = models.BooleanField(default=False, verbose_name="ولي أمر")
+    
+    # National ID is crucial for integration
+    national_id = models.CharField(max_length=32, unique=True, null=True, blank=True, verbose_name="الرقم الشخصي")
 
-class Group(BaseFormFields):
-    name = models.CharField(max_length=64, unique=True)
-    description = models.CharField(max_length=256, null=True, blank=True)
+    class Meta:
+        verbose_name = "مستخدم"
+        verbose_name_plural = "المستخدمون"
 
-class UserGroup(BaseFormFields):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    group = models.ForeignKey(Group, on_delete=models.CASCADE)
-
-class Permission(BaseFormFields):
-    code = models.CharField(max_length=64, unique=True)
-    description = models.CharField(max_length=256)
-
-class GroupPermission(BaseFormFields):
-    group = models.ForeignKey(Group, on_delete=models.CASCADE)
-    permission = models.ForeignKey(Permission, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.username

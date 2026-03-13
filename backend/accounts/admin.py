@@ -1,8 +1,17 @@
 from django.contrib import admin
-from .models import User, Group, UserGroup, Permission, GroupPermission
+from django.contrib.auth.admin import UserAdmin
+from .models import User
 
-admin.site.register(User)
-admin.site.register(Group)
-admin.site.register(UserGroup)
-admin.site.register(Permission)
-admin.site.register(GroupPermission)
+@admin.register(User)
+class CustomUserAdmin(UserAdmin):
+    model = User
+    list_display = ('username', 'email', 'first_name', 'last_name', 'is_staff', 'is_teacher', 'is_student')
+    list_filter = ('is_staff', 'is_superuser', 'is_active', 'groups', 'is_teacher', 'is_student')
+    
+    # Add custom fields to the fieldsets
+    fieldsets = UserAdmin.fieldsets + (
+        ('Custom Roles', {'fields': ('is_teacher', 'is_student', 'is_parent', 'national_id')}),
+    )
+    add_fieldsets = UserAdmin.add_fieldsets + (
+        ('Custom Roles', {'fields': ('is_teacher', 'is_student', 'is_parent', 'national_id')}),
+    )

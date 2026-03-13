@@ -1,31 +1,32 @@
 from django.db import models
-from backend.common.models import BaseFormFields
+from django.conf import settings
+from backend.common.models import ShahaniaBaseModel
 
-class Staff(BaseFormFields):
-    full_name_ar = models.CharField(max_length=128)
-    position = models.CharField(max_length=64)
-    phone = models.CharField(max_length=32, null=True, blank=True)
+class Staff(ShahaniaBaseModel):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name="المستخدم")
+    job_title = models.CharField(max_length=128, null=True, blank=True, verbose_name="المسمى الوظيفي")
+    hire_date = models.DateField(null=True, blank=True, verbose_name="تاريخ التعيين")
 
-class StaffAttendance(BaseFormFields):
-    staff = models.ForeignKey(Staff, on_delete=models.CASCADE)
-    date = models.DateField()
-    status = models.CharField(max_length=24)
+class StaffAttendance(ShahaniaBaseModel):
+    staff = models.ForeignKey(Staff, on_delete=models.CASCADE, verbose_name="الموظف")
+    date = models.DateField(verbose_name="التاريخ")
+    check_in = models.TimeField(null=True, blank=True, verbose_name="وقت الدخول")
+    check_out = models.TimeField(null=True, blank=True, verbose_name="وقت الخروج")
+    STATUS_CHOICES = [('present', 'حضور'), ('absent', 'غياب'), ('leave', 'إجازة')]
+    status = models.CharField(max_length=16, choices=STATUS_CHOICES, verbose_name="الحالة")
 
-class LeaveRequest(BaseFormFields):
-    staff = models.ForeignKey(Staff, on_delete=models.CASCADE)
-    leave_type = models.CharField(max_length=32)
-    from_date = models.DateField()
-    to_date = models.DateField()
-    reason = models.TextField(null=True, blank=True)
+    class Meta:
+        unique_together = ('staff', 'date')
 
-class DisciplinaryAction(BaseFormFields):
-    staff = models.ForeignKey(Staff, on_delete=models.CASCADE)
-    action_type = models.CharField(max_length=64)
-    details = models.TextField(null=True, blank=True)
+class LeaveRequest(ShahaniaBaseModel):
+    staff = models.ForeignKey(Staff, on_delete=models.CASCADE, verbose_name="الموظف")
+    leave_type = models.CharField(max_length=24, verbose_name="نوع الإجازة")
+    date_from = models.DateField(verbose_name="من")
+    date_to = models.DateField(verbose_name="إلى")
+    balance_before = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True, verbose_name="الرصيد قبل")
+    status = models.CharField(max_length=16, default='pending', verbose_name="الحالة")
 
-class PerformanceReview(BaseFormFields):
-    staff = models.ForeignKey(Staff, on_delete=models.CASCADE)
-    reviewer_id = models.UUIDField()
-    review_date = models.DateField()
-    score = models.DecimalField(max_digits=5, decimal_places=2)
-    notes = models.TextField(null=True, blank=True)
+class PerformanceReview(ShahaniaBaseModel):
+    staff = models.ForeignKey(Staff, on_delete=models.CASCADE, verbose_name="الموظف")
+    kpi_scores = models.JSONField(verbose_name="درجات الأداء")
+    overall = models.DecimalField(max_digits=4, decimal_places=2, null=True, blank=True, verbose_name="التقييم العام")

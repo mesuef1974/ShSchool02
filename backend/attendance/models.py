@@ -1,13 +1,25 @@
 from django.db import models
-from backend.common.models import BaseFormFields
+from backend.common.models import ShahaniaBaseModel
 
-class AttendanceRecord(BaseFormFields):
-    student = models.ForeignKey('students.Student', on_delete=models.CASCADE)
-    date = models.DateField()
-    status = models.CharField(max_length=24)  # present/absent/late
-    arrival_time = models.TimeField(null=True, blank=True)
-    minutes_late = models.SmallIntegerField(null=True, blank=True)
-    action = models.CharField(max_length=64, null=True, blank=True)
-    reason = models.TextField(null=True, blank=True)
-    guardian_id_doc = models.CharField(max_length=64, null=True, blank=True)
-    evidence_doc_ref = models.CharField(max_length=256, null=True, blank=True)
+class AttendanceRecord(ShahaniaBaseModel):
+    # We need to import Enrollment inside the class or use string reference to avoid circular import if possible,
+    # but since Enrollment is in 'students', we can import it.
+    enrollment = models.ForeignKey('students.Enrollment', on_delete=models.CASCADE, verbose_name="قيد الطالب")
+    date = models.DateField(verbose_name="التاريخ")
+    period = models.SmallIntegerField(null=True, blank=True, verbose_name="الحصة")
+    
+    STATUS_CHOICES = [
+        ('P', 'حضور'), 
+        ('A', 'غياب'), 
+        ('E', 'عذر'), 
+        ('L', 'تأخر'), 
+        ('ED', 'انصراف مبكر')
+    ]
+    status = models.CharField(max_length=2, choices=STATUS_CHOICES, verbose_name="الحالة")
+    reason_code = models.CharField(max_length=32, null=True, blank=True, verbose_name="رمز السبب")
+    archived = models.BooleanField(default=False, verbose_name="مؤرشف")
+
+    class Meta:
+        unique_together = ('enrollment', 'date', 'period')
+        verbose_name = "سجل الحضور"
+        verbose_name_plural = "سجلات الحضور"

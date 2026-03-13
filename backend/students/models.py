@@ -1,44 +1,39 @@
 from django.db import models
-from backend.common.models import BaseFormFields
+from django.conf import settings
+from backend.common.models import ShahaniaBaseModel
 
-class School(BaseFormFields):
-    name_ar = models.CharField(max_length=256)
-    moe_code = models.CharField(max_length=32, unique=True, null=True, blank=True)
-    level = models.CharField(max_length=32, null=True, blank=True)  # preparatory/secondary
+class Guardian(ShahaniaBaseModel):
+    full_name_ar = models.CharField(max_length=128, verbose_name="اسم ولي الأمر")
+    phone = models.CharField(max_length=32, verbose_name="رقم الهاتف")
+    relation = models.CharField(max_length=32, null=True, blank=True, verbose_name="صلة القرابة")
 
-class AcademicYear(BaseFormFields):
-    code = models.CharField(max_length=9, unique=True)  # e.g., 2025-2026
+    def __str__(self):
+        return self.full_name_ar
 
-class Term(BaseFormFields):
-    year = models.ForeignKey(AcademicYear, on_delete=models.CASCADE, related_name='terms')
-    code = models.CharField(max_length=8)
+class Student(ShahaniaBaseModel):
+    national_id = models.CharField(max_length=32, unique=True, verbose_name="الرقم الشخصي")
+    first_name_ar = models.CharField(max_length=64, verbose_name="الاسم الأول")
+    last_name_ar = models.CharField(max_length=64, verbose_name="العائلة")
+    dob = models.DateField(verbose_name="تاريخ الميلاد")
+    nationality = models.CharField(max_length=64, null=True, blank=True, verbose_name="الجنسية")
+    guardian = models.ForeignKey(Guardian, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="ولي الأمر")
+    pdppl_consent = models.BooleanField(default=False, verbose_name="موافقة PDPPL")
+    consent_ts = models.DateTimeField(null=True, blank=True, verbose_name="تاريخ الموافقة")
 
-    class Meta:
-        unique_together = ('year', 'code')
+    def __str__(self):
+        return f"{self.first_name_ar} {self.last_name_ar}"
 
-class Guardian(BaseFormFields):
-    full_name_ar = models.CharField(max_length=128)
-    phone = models.CharField(max_length=32)
-    relation = models.CharField(max_length=32, null=True, blank=True)
-
-class Student(BaseFormFields):
-    national_id = models.CharField(max_length=32, unique=True)
-    first_name_ar = models.CharField(max_length=64)
-    last_name_ar = models.CharField(max_length=64)
-    dob = models.DateField()
-    nationality = models.CharField(max_length=64, null=True, blank=True)
-    guardian = models.ForeignKey(Guardian, null=True, blank=True, on_delete=models.SET_NULL)
-    pdppl_guardian_consent = models.BooleanField(default=False)
-    consent_ts = models.DateTimeField(null=True, blank=True)
-
-class Enrollment(BaseFormFields):
-    student = models.ForeignKey(Student, on_delete=models.CASCADE)
-    school = models.ForeignKey(School, on_delete=models.CASCADE)
-    year = models.ForeignKey(AcademicYear, on_delete=models.CASCADE)
-    grade = models.CharField(max_length=16)
-    section = models.CharField(max_length=8, null=True, blank=True)
-    valid_from = models.DateField()
-    valid_to = models.DateField(null=True, blank=True)
+class Enrollment(ShahaniaBaseModel):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE, verbose_name="الطالب")
+    school_id = models.UUIDField(verbose_name="المدرسة")
+    year_id = models.UUIDField(verbose_name="السنة")
+    grade = models.CharField(max_length=16, verbose_name="الصف")
+    section = models.CharField(max_length=8, null=True, blank=True, verbose_name="الشعبة")
+    valid_from = models.DateField(verbose_name="ساري من")
+    valid_to = models.DateField(null=True, blank=True, verbose_name="ساري إلى")
 
     class Meta:
-        unique_together = ('student', 'school', 'year', 'grade', 'section')
+        unique_together = ('student', 'school_id', 'year_id', 'grade', 'section')
+    
+    def __str__(self):
+        return f"{self.student} - {self.grade}/{self.section}"
