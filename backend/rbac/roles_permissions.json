@@ -1,0 +1,68 @@
+{
+  "roles": [
+    "school_admin",
+    "vice_principal",
+    "student_affairs",
+    "teacher",
+    "counselor",
+    "nurse",
+    "transport_officer",
+    "librarian",
+    "quality_officer",
+    "safety_officer",
+    "parent",
+    "student"
+  ],
+  "permissions": {
+    "attendance": [
+      "read",
+      "create",
+      "update"
+    ],
+    "assessment": [
+      "read",
+      "create",
+      "update"
+    ],
+    "behavior": [
+      "read",
+      "create",
+      "update"
+    ],
+    "health": [
+      "read_secure",
+      "create_secure",
+      "update_secure"
+    ],
+    "transport": [
+      "read",
+      "create",
+      "update"
+    ],
+    "library": [
+      "read",
+      "create",
+      "update"
+    ],
+    "quality": [
+      "read",
+      "create",
+      "update"
+    ],
+    "assets": [
+      "read",
+      "create",
+      "update"
+    ],
+    "comms": [
+      "send",
+      "read_logs"
+    ],
+    "reports": [
+      "read"
+    ],
+    "refdata": [
+      "read"
+    ]
+  }
+}
