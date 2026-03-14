@@ -14,6 +14,24 @@
     "student"
   ],
   "permissions": {
+    "people": [
+      "read",
+      "create",
+      "update"
+    ],
+    "core": [
+      "read",
+      "create",
+      "update"
+    ],
+    "refdata": [
+      "read"
+    ],
+    "timetable": [
+      "read",
+      "create",
+      "update"
+    ],
     "attendance": [
       "read",
       "create",
@@ -59,9 +77,6 @@
       "read_logs"
     ],
     "reports": [
-      "read"
-    ],
-    "refdata": [
       "read"
     ]
   }
