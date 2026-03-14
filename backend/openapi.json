@@ -1,0 +1,4525 @@
+openapi: 3.0.3
+info:
+  title: Shahania School API
+  version: '0.2'
+  description: واجهات منصة مدرسة الشحانية
+paths:
+  /api/appeals/:
+    get:
+      operationId: appeals_list
+      tags:
+      - appeals
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Appeal'
+          description: ''
+    post:
+      operationId: appeals_create
+      tags:
+      - appeals
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Appeal'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Appeal'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Appeal'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Appeal'
+          description: ''
+  /api/appeals/{id}/:
+    get:
+      operationId: appeals_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this تظلّم.
+        required: true
+      tags:
+      - appeals
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Appeal'
+          description: ''
+    put:
+      operationId: appeals_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this تظلّم.
+        required: true
+      tags:
+      - appeals
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Appeal'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Appeal'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Appeal'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Appeal'
+          description: ''
+    patch:
+      operationId: appeals_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this تظلّم.
+        required: true
+      tags:
+      - appeals
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedAppeal'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedAppeal'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedAppeal'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Appeal'
+          description: ''
+    delete:
+      operationId: appeals_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this تظلّم.
+        required: true
+      tags:
+      - appeals
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/attendance-records/:
+    get:
+      operationId: attendance_records_list
+      parameters:
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - attendance-records
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AttendanceRecord'
+          description: ''
+    post:
+      operationId: attendance_records_create
+      tags:
+      - attendance-records
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AttendanceRecord'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AttendanceRecord'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AttendanceRecord'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AttendanceRecord'
+          description: ''
+  /api/attendance-records/{id}/:
+    get:
+      operationId: attendance_records_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this سجل حضور طالب.
+        required: true
+      tags:
+      - attendance-records
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AttendanceRecord'
+          description: ''
+    put:
+      operationId: attendance_records_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this سجل حضور طالب.
+        required: true
+      tags:
+      - attendance-records
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AttendanceRecord'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AttendanceRecord'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AttendanceRecord'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AttendanceRecord'
+          description: ''
+    patch:
+      operationId: attendance_records_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this سجل حضور طالب.
+        required: true
+      tags:
+      - attendance-records
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedAttendanceRecord'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedAttendanceRecord'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedAttendanceRecord'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AttendanceRecord'
+          description: ''
+    delete:
+      operationId: attendance_records_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this سجل حضور طالب.
+        required: true
+      tags:
+      - attendance-records
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/auth/token/:
+    post:
+      operationId: auth_token_create
+      description: |-
+        Takes a set of user credentials and returns an access and refresh JSON web
+        token pair to prove the authentication of those credentials.
+      tags:
+      - auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenObtainPair'
+          description: ''
+  /api/auth/token/refresh/:
+    post:
+      operationId: auth_token_refresh_create
+      description: |-
+        Takes a refresh type JSON web token and returns an access type JSON web
+        token if the refresh token is valid.
+      tags:
+      - auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenRefresh'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenRefresh'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TokenRefresh'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenRefresh'
+          description: ''
+  /api/behavior-incidents/:
+    get:
+      operationId: behavior_incidents_list
+      tags:
+      - behavior-incidents
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BehaviorIncident'
+          description: ''
+    post:
+      operationId: behavior_incidents_create
+      tags:
+      - behavior-incidents
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BehaviorIncident'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BehaviorIncident'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BehaviorIncident'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BehaviorIncident'
+          description: ''
+  /api/behavior-incidents/{id}/:
+    get:
+      operationId: behavior_incidents_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this واقعة سلوكية.
+        required: true
+      tags:
+      - behavior-incidents
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BehaviorIncident'
+          description: ''
+    put:
+      operationId: behavior_incidents_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this واقعة سلوكية.
+        required: true
+      tags:
+      - behavior-incidents
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BehaviorIncident'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BehaviorIncident'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BehaviorIncident'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BehaviorIncident'
+          description: ''
+    patch:
+      operationId: behavior_incidents_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this واقعة سلوكية.
+        required: true
+      tags:
+      - behavior-incidents
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedBehaviorIncident'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedBehaviorIncident'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedBehaviorIncident'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BehaviorIncident'
+          description: ''
+    delete:
+      operationId: behavior_incidents_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this واقعة سلوكية.
+        required: true
+      tags:
+      - behavior-incidents
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/class-rooms/:
+    get:
+      operationId: class_rooms_list
+      parameters:
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - class-rooms
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ClassRoom'
+          description: ''
+    post:
+      operationId: class_rooms_create
+      tags:
+      - class-rooms
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClassRoom'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ClassRoom'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ClassRoom'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClassRoom'
+          description: ''
+  /api/class-rooms/{id}/:
+    get:
+      operationId: class_rooms_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this شعبة صف.
+        required: true
+      tags:
+      - class-rooms
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClassRoom'
+          description: ''
+    put:
+      operationId: class_rooms_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this شعبة صف.
+        required: true
+      tags:
+      - class-rooms
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClassRoom'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ClassRoom'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ClassRoom'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClassRoom'
+          description: ''
+    patch:
+      operationId: class_rooms_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this شعبة صف.
+        required: true
+      tags:
+      - class-rooms
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedClassRoom'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedClassRoom'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedClassRoom'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClassRoom'
+          description: ''
+    delete:
+      operationId: class_rooms_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this شعبة صف.
+        required: true
+      tags:
+      - class-rooms
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/clinic-visits/:
+    get:
+      operationId: clinic_visits_list
+      tags:
+      - clinic-visits
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ClinicVisit'
+          description: ''
+    post:
+      operationId: clinic_visits_create
+      tags:
+      - clinic-visits
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClinicVisit'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ClinicVisit'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ClinicVisit'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClinicVisit'
+          description: ''
+  /api/clinic-visits/{id}/:
+    get:
+      operationId: clinic_visits_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this زيارة عيادة.
+        required: true
+      tags:
+      - clinic-visits
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClinicVisit'
+          description: ''
+    put:
+      operationId: clinic_visits_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this زيارة عيادة.
+        required: true
+      tags:
+      - clinic-visits
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClinicVisit'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ClinicVisit'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ClinicVisit'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClinicVisit'
+          description: ''
+    patch:
+      operationId: clinic_visits_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this زيارة عيادة.
+        required: true
+      tags:
+      - clinic-visits
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedClinicVisit'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedClinicVisit'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedClinicVisit'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClinicVisit'
+          description: ''
+    delete:
+      operationId: clinic_visits_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this زيارة عيادة.
+        required: true
+      tags:
+      - clinic-visits
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/enrollments/:
+    get:
+      operationId: enrollments_list
+      parameters:
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - enrollments
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Enrollment'
+          description: ''
+    post:
+      operationId: enrollments_create
+      tags:
+      - enrollments
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Enrollment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Enrollment'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Enrollment'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Enrollment'
+          description: ''
+  /api/enrollments/{id}/:
+    get:
+      operationId: enrollments_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this قيد طالب.
+        required: true
+      tags:
+      - enrollments
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Enrollment'
+          description: ''
+    put:
+      operationId: enrollments_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this قيد طالب.
+        required: true
+      tags:
+      - enrollments
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Enrollment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Enrollment'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Enrollment'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Enrollment'
+          description: ''
+    patch:
+      operationId: enrollments_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this قيد طالب.
+        required: true
+      tags:
+      - enrollments
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedEnrollment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedEnrollment'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedEnrollment'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Enrollment'
+          description: ''
+    delete:
+      operationId: enrollments_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this قيد طالب.
+        required: true
+      tags:
+      - enrollments
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/exam-results/:
+    get:
+      operationId: exam_results_list
+      tags:
+      - exam-results
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ExamResult'
+          description: ''
+    post:
+      operationId: exam_results_create
+      tags:
+      - exam-results
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExamResult'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ExamResult'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ExamResult'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExamResult'
+          description: ''
+  /api/exam-results/{id}/:
+    get:
+      operationId: exam_results_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this نتيجة اختبار.
+        required: true
+      tags:
+      - exam-results
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExamResult'
+          description: ''
+    put:
+      operationId: exam_results_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this نتيجة اختبار.
+        required: true
+      tags:
+      - exam-results
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExamResult'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ExamResult'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ExamResult'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExamResult'
+          description: ''
+    patch:
+      operationId: exam_results_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this نتيجة اختبار.
+        required: true
+      tags:
+      - exam-results
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedExamResult'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedExamResult'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedExamResult'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExamResult'
+          description: ''
+    delete:
+      operationId: exam_results_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this نتيجة اختبار.
+        required: true
+      tags:
+      - exam-results
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/exams/:
+    get:
+      operationId: exams_list
+      tags:
+      - exams
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Exam'
+          description: ''
+    post:
+      operationId: exams_create
+      tags:
+      - exams
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Exam'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Exam'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Exam'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Exam'
+          description: ''
+  /api/exams/{id}/:
+    get:
+      operationId: exams_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this اختبار.
+        required: true
+      tags:
+      - exams
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Exam'
+          description: ''
+    put:
+      operationId: exams_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this اختبار.
+        required: true
+      tags:
+      - exams
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Exam'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Exam'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Exam'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Exam'
+          description: ''
+    patch:
+      operationId: exams_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this اختبار.
+        required: true
+      tags:
+      - exams
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedExam'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedExam'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedExam'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Exam'
+          description: ''
+    delete:
+      operationId: exams_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this اختبار.
+        required: true
+      tags:
+      - exams
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/guardians/:
+    get:
+      operationId: guardians_list
+      parameters:
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - guardians
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Guardian'
+          description: ''
+    post:
+      operationId: guardians_create
+      tags:
+      - guardians
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Guardian'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Guardian'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Guardian'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Guardian'
+          description: ''
+  /api/guardians/{id}/:
+    get:
+      operationId: guardians_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this ولي أمر.
+        required: true
+      tags:
+      - guardians
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Guardian'
+          description: ''
+    put:
+      operationId: guardians_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this ولي أمر.
+        required: true
+      tags:
+      - guardians
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Guardian'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Guardian'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Guardian'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Guardian'
+          description: ''
+    patch:
+      operationId: guardians_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this ولي أمر.
+        required: true
+      tags:
+      - guardians
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedGuardian'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedGuardian'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedGuardian'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Guardian'
+          description: ''
+    delete:
+      operationId: guardians_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this ولي أمر.
+        required: true
+      tags:
+      - guardians
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/library-copies/:
+    get:
+      operationId: library_copies_list
+      tags:
+      - library-copies
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LibraryCopy'
+          description: ''
+    post:
+      operationId: library_copies_create
+      tags:
+      - library-copies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LibraryCopy'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/LibraryCopy'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/LibraryCopy'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LibraryCopy'
+          description: ''
+  /api/library-copies/{id}/:
+    get:
+      operationId: library_copies_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this نسخة كتاب.
+        required: true
+      tags:
+      - library-copies
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LibraryCopy'
+          description: ''
+    put:
+      operationId: library_copies_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this نسخة كتاب.
+        required: true
+      tags:
+      - library-copies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LibraryCopy'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/LibraryCopy'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/LibraryCopy'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LibraryCopy'
+          description: ''
+    patch:
+      operationId: library_copies_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this نسخة كتاب.
+        required: true
+      tags:
+      - library-copies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedLibraryCopy'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedLibraryCopy'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedLibraryCopy'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LibraryCopy'
+          description: ''
+    delete:
+      operationId: library_copies_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this نسخة كتاب.
+        required: true
+      tags:
+      - library-copies
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/library-loans/:
+    get:
+      operationId: library_loans_list
+      tags:
+      - library-loans
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LibraryLoan'
+          description: ''
+    post:
+      operationId: library_loans_create
+      tags:
+      - library-loans
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LibraryLoan'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/LibraryLoan'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/LibraryLoan'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LibraryLoan'
+          description: ''
+  /api/library-loans/{id}/:
+    get:
+      operationId: library_loans_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this إعارة.
+        required: true
+      tags:
+      - library-loans
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LibraryLoan'
+          description: ''
+    put:
+      operationId: library_loans_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this إعارة.
+        required: true
+      tags:
+      - library-loans
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LibraryLoan'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/LibraryLoan'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/LibraryLoan'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LibraryLoan'
+          description: ''
+    patch:
+      operationId: library_loans_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this إعارة.
+        required: true
+      tags:
+      - library-loans
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedLibraryLoan'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedLibraryLoan'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedLibraryLoan'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LibraryLoan'
+          description: ''
+    delete:
+      operationId: library_loans_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this إعارة.
+        required: true
+      tags:
+      - library-loans
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/library-titles/:
+    get:
+      operationId: library_titles_list
+      tags:
+      - library-titles
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LibraryTitle'
+          description: ''
+    post:
+      operationId: library_titles_create
+      tags:
+      - library-titles
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LibraryTitle'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/LibraryTitle'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/LibraryTitle'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LibraryTitle'
+          description: ''
+  /api/library-titles/{id}/:
+    get:
+      operationId: library_titles_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this عنوان كتاب.
+        required: true
+      tags:
+      - library-titles
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LibraryTitle'
+          description: ''
+    put:
+      operationId: library_titles_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this عنوان كتاب.
+        required: true
+      tags:
+      - library-titles
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LibraryTitle'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/LibraryTitle'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/LibraryTitle'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LibraryTitle'
+          description: ''
+    patch:
+      operationId: library_titles_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this عنوان كتاب.
+        required: true
+      tags:
+      - library-titles
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedLibraryTitle'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedLibraryTitle'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedLibraryTitle'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LibraryTitle'
+          description: ''
+    delete:
+      operationId: library_titles_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this عنوان كتاب.
+        required: true
+      tags:
+      - library-titles
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/rooms/:
+    get:
+      operationId: rooms_list
+      parameters:
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - rooms
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Room'
+          description: ''
+    post:
+      operationId: rooms_create
+      tags:
+      - rooms
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Room'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Room'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Room'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Room'
+          description: ''
+  /api/rooms/{id}/:
+    get:
+      operationId: rooms_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this قاعة/غرفة.
+        required: true
+      tags:
+      - rooms
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Room'
+          description: ''
+    put:
+      operationId: rooms_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this قاعة/غرفة.
+        required: true
+      tags:
+      - rooms
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Room'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Room'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Room'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Room'
+          description: ''
+    patch:
+      operationId: rooms_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this قاعة/غرفة.
+        required: true
+      tags:
+      - rooms
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedRoom'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedRoom'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedRoom'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Room'
+          description: ''
+    delete:
+      operationId: rooms_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this قاعة/غرفة.
+        required: true
+      tags:
+      - rooms
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/routes/:
+    get:
+      operationId: routes_list
+      tags:
+      - routes
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Route'
+          description: ''
+    post:
+      operationId: routes_create
+      tags:
+      - routes
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Route'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Route'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Route'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Route'
+          description: ''
+  /api/routes/{id}/:
+    get:
+      operationId: routes_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this مسار نقل.
+        required: true
+      tags:
+      - routes
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Route'
+          description: ''
+    put:
+      operationId: routes_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this مسار نقل.
+        required: true
+      tags:
+      - routes
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Route'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Route'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Route'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Route'
+          description: ''
+    patch:
+      operationId: routes_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this مسار نقل.
+        required: true
+      tags:
+      - routes
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedRoute'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedRoute'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedRoute'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Route'
+          description: ''
+    delete:
+      operationId: routes_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this مسار نقل.
+        required: true
+      tags:
+      - routes
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/schools/:
+    get:
+      operationId: schools_list
+      parameters:
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - schools
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/School'
+          description: ''
+    post:
+      operationId: schools_create
+      tags:
+      - schools
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/School'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/School'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/School'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/School'
+          description: ''
+  /api/schools/{id}/:
+    get:
+      operationId: schools_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this مدرسة.
+        required: true
+      tags:
+      - schools
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/School'
+          description: ''
+    put:
+      operationId: schools_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this مدرسة.
+        required: true
+      tags:
+      - schools
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/School'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/School'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/School'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/School'
+          description: ''
+    patch:
+      operationId: schools_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this مدرسة.
+        required: true
+      tags:
+      - schools
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedSchool'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedSchool'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedSchool'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/School'
+          description: ''
+    delete:
+      operationId: schools_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this مدرسة.
+        required: true
+      tags:
+      - schools
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/staff/:
+    get:
+      operationId: staff_list
+      parameters:
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - staff
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Staff'
+          description: ''
+    post:
+      operationId: staff_create
+      tags:
+      - staff
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Staff'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Staff'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Staff'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Staff'
+          description: ''
+  /api/staff/{id}/:
+    get:
+      operationId: staff_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this موظف/معلم.
+        required: true
+      tags:
+      - staff
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Staff'
+          description: ''
+    put:
+      operationId: staff_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this موظف/معلم.
+        required: true
+      tags:
+      - staff
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Staff'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Staff'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Staff'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Staff'
+          description: ''
+    patch:
+      operationId: staff_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this موظف/معلم.
+        required: true
+      tags:
+      - staff
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedStaff'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedStaff'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedStaff'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Staff'
+          description: ''
+    delete:
+      operationId: staff_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this موظف/معلم.
+        required: true
+      tags:
+      - staff
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/student-riders/:
+    get:
+      operationId: student_riders_list
+      tags:
+      - student-riders
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StudentRider'
+          description: ''
+    post:
+      operationId: student_riders_create
+      tags:
+      - student-riders
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StudentRider'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/StudentRider'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/StudentRider'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StudentRider'
+          description: ''
+  /api/student-riders/{id}/:
+    get:
+      operationId: student_riders_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this مستقل حافلة.
+        required: true
+      tags:
+      - student-riders
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StudentRider'
+          description: ''
+    put:
+      operationId: student_riders_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this مستقل حافلة.
+        required: true
+      tags:
+      - student-riders
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StudentRider'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/StudentRider'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/StudentRider'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StudentRider'
+          description: ''
+    patch:
+      operationId: student_riders_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this مستقل حافلة.
+        required: true
+      tags:
+      - student-riders
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedStudentRider'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedStudentRider'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedStudentRider'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StudentRider'
+          description: ''
+    delete:
+      operationId: student_riders_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this مستقل حافلة.
+        required: true
+      tags:
+      - student-riders
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/students/:
+    get:
+      operationId: students_list
+      parameters:
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - students
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Student'
+          description: ''
+    post:
+      operationId: students_create
+      tags:
+      - students
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Student'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Student'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Student'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Student'
+          description: ''
+  /api/students/{id}/:
+    get:
+      operationId: students_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this طالب.
+        required: true
+      tags:
+      - students
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Student'
+          description: ''
+    put:
+      operationId: students_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this طالب.
+        required: true
+      tags:
+      - students
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Student'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Student'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Student'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Student'
+          description: ''
+    patch:
+      operationId: students_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this طالب.
+        required: true
+      tags:
+      - students
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedStudent'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedStudent'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedStudent'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Student'
+          description: ''
+    delete:
+      operationId: students_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this طالب.
+        required: true
+      tags:
+      - students
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/subjects/:
+    get:
+      operationId: subjects_list
+      parameters:
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - subjects
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Subject'
+          description: ''
+    post:
+      operationId: subjects_create
+      tags:
+      - subjects
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Subject'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Subject'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Subject'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subject'
+          description: ''
+  /api/subjects/{id}/:
+    get:
+      operationId: subjects_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this مادة.
+        required: true
+      tags:
+      - subjects
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subject'
+          description: ''
+    put:
+      operationId: subjects_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this مادة.
+        required: true
+      tags:
+      - subjects
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Subject'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Subject'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Subject'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subject'
+          description: ''
+    patch:
+      operationId: subjects_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this مادة.
+        required: true
+      tags:
+      - subjects
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedSubject'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedSubject'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedSubject'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subject'
+          description: ''
+    delete:
+      operationId: subjects_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this مادة.
+        required: true
+      tags:
+      - subjects
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/terms/:
+    get:
+      operationId: terms_list
+      parameters:
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - terms
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Term'
+          description: ''
+    post:
+      operationId: terms_create
+      tags:
+      - terms
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Term'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Term'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Term'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Term'
+          description: ''
+  /api/terms/{id}/:
+    get:
+      operationId: terms_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this فصل دراسي.
+        required: true
+      tags:
+      - terms
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Term'
+          description: ''
+    put:
+      operationId: terms_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this فصل دراسي.
+        required: true
+      tags:
+      - terms
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Term'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Term'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Term'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Term'
+          description: ''
+    patch:
+      operationId: terms_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this فصل دراسي.
+        required: true
+      tags:
+      - terms
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedTerm'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedTerm'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedTerm'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Term'
+          description: ''
+    delete:
+      operationId: terms_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this فصل دراسي.
+        required: true
+      tags:
+      - terms
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/timetable-slots/:
+    get:
+      operationId: timetable_slots_list
+      tags:
+      - timetable-slots
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TimetableSlot'
+          description: ''
+    post:
+      operationId: timetable_slots_create
+      tags:
+      - timetable-slots
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TimetableSlot'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TimetableSlot'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TimetableSlot'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimetableSlot'
+          description: ''
+  /api/timetable-slots/{id}/:
+    get:
+      operationId: timetable_slots_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this حصة.
+        required: true
+      tags:
+      - timetable-slots
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimetableSlot'
+          description: ''
+    put:
+      operationId: timetable_slots_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this حصة.
+        required: true
+      tags:
+      - timetable-slots
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TimetableSlot'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TimetableSlot'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TimetableSlot'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimetableSlot'
+          description: ''
+    patch:
+      operationId: timetable_slots_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this حصة.
+        required: true
+      tags:
+      - timetable-slots
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedTimetableSlot'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedTimetableSlot'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedTimetableSlot'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimetableSlot'
+          description: ''
+    delete:
+      operationId: timetable_slots_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this حصة.
+        required: true
+      tags:
+      - timetable-slots
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/years/:
+    get:
+      operationId: years_list
+      parameters:
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - years
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Year'
+          description: ''
+    post:
+      operationId: years_create
+      tags:
+      - years
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Year'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Year'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Year'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Year'
+          description: ''
+  /api/years/{id}/:
+    get:
+      operationId: years_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this عام دراسي.
+        required: true
+      tags:
+      - years
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Year'
+          description: ''
+    put:
+      operationId: years_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this عام دراسي.
+        required: true
+      tags:
+      - years
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Year'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Year'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Year'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Year'
+          description: ''
+    patch:
+      operationId: years_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this عام دراسي.
+        required: true
+      tags:
+      - years
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedYear'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedYear'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedYear'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Year'
+          description: ''
+    delete:
+      operationId: years_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this عام دراسي.
+        required: true
+      tags:
+      - years
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /schema/:
+    get:
+      operationId: schema_retrieve
+      description: |-
+        OpenApi3 schema for this API. Format can be selected via content negotiation.
+
+        - YAML: application/vnd.oai.openapi
+        - JSON: application/vnd.oai.openapi+json
+      parameters:
+      - in: query
+        name: format
+        schema:
+          type: string
+          enum:
+          - json
+          - yaml
+      - in: query
+        name: lang
+        schema:
+          type: string
+          enum:
+          - af
+          - ar
+          - ar-dz
+          - ast
+          - az
+          - be
+          - bg
+          - bn
+          - br
+          - bs
+          - ca
+          - ckb
+          - cs
+          - cy
+          - da
+          - de
+          - dsb
+          - el
+          - en
+          - en-au
+          - en-gb
+          - eo
+          - es
+          - es-ar
+          - es-co
+          - es-mx
+          - es-ni
+          - es-ve
+          - et
+          - eu
+          - fa
+          - fi
+          - fr
+          - fy
+          - ga
+          - gd
+          - gl
+          - he
+          - hi
+          - hr
+          - hsb
+          - hu
+          - hy
+          - ia
+          - id
+          - ig
+          - io
+          - is
+          - it
+          - ja
+          - ka
+          - kab
+          - kk
+          - km
+          - kn
+          - ko
+          - ky
+          - lb
+          - lt
+          - lv
+          - mk
+          - ml
+          - mn
+          - mr
+          - ms
+          - my
+          - nb
+          - ne
+          - nl
+          - nn
+          - os
+          - pa
+          - pl
+          - pt
+          - pt-br
+          - ro
+          - ru
+          - sk
+          - sl
+          - sq
+          - sr
+          - sr-latn
+          - sv
+          - sw
+          - ta
+          - te
+          - tg
+          - th
+          - tk
+          - tr
+          - tt
+          - udm
+          - ug
+          - uk
+          - ur
+          - uz
+          - vi
+          - zh-hans
+          - zh-hant
+      tags:
+      - schema
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/vnd.oai.openapi:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/yaml:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/vnd.oai.openapi+json:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+components:
+  schemas:
+    Appeal:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        reason:
+          type: string
+        decision:
+          type: string
+        enrollment:
+          type: string
+          format: uuid
+        exam:
+          type: string
+          format: uuid
+      required:
+      - enrollment
+      - exam
+      - id
+      - reason
+    AttendanceRecord:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        date:
+          type: string
+          format: date
+        period:
+          type: integer
+          maximum: 32767
+          minimum: -32768
+        status:
+          $ref: '#/components/schemas/StatusEnum'
+        note:
+          type: string
+        enrollment:
+          type: string
+          format: uuid
+      required:
+      - date
+      - enrollment
+      - id
+      - period
+      - status
+    BehaviorIncident:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        date:
+          type: string
+          format: date
+        period:
+          type: integer
+          maximum: 32767
+          minimum: -32768
+          nullable: true
+        place:
+          type: string
+          maxLength: 120
+        category:
+          type: string
+          maxLength: 80
+        description:
+          type: string
+        student:
+          type: string
+          format: uuid
+      required:
+      - category
+      - date
+      - description
+      - id
+      - student
+    ClassRoom:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        grade:
+          type: integer
+          maximum: 32767
+          minimum: -32768
+        section:
+          type: string
+          maxLength: 10
+        school:
+          type: string
+          format: uuid
+        year:
+          type: string
+          format: uuid
+      required:
+      - grade
+      - id
+      - school
+      - section
+      - year
+    ClinicVisit:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        date:
+          type: string
+          format: date
+        reason:
+          type: string
+          maxLength: 200
+        details_enc:
+          type: string
+          format: byte
+          readOnly: true
+          nullable: true
+        student:
+          type: string
+          format: uuid
+      required:
+      - date
+      - details_enc
+      - id
+      - reason
+      - student
+    Enrollment:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        grade:
+          type: integer
+          maximum: 32767
+          minimum: -32768
+        status:
+          type: string
+          maxLength: 20
+        student:
+          type: string
+          format: uuid
+        school:
+          type: string
+          format: uuid
+        year:
+          type: string
+          format: uuid
+        class_room:
+          type: string
+          format: uuid
+      required:
+      - class_room
+      - grade
+      - id
+      - school
+      - student
+      - year
+    Exam:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          maxLength: 150
+        term_code:
+          type: string
+          maxLength: 10
+        subject:
+          type: string
+          format: uuid
+      required:
+      - id
+      - name
+      - subject
+      - term_code
+    ExamResult:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        score:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,4}(?:\.\d{0,2})?$
+        enrollment:
+          type: string
+          format: uuid
+        exam:
+          type: string
+          format: uuid
+      required:
+      - enrollment
+      - exam
+      - id
+      - score
+    GenderEnum:
+      enum:
+      - M
+      - F
+      type: string
+      description: |-
+        * `M` - ذكر
+        * `F` - أنثى
+    Guardian:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        first_name_ar:
+          type: string
+          maxLength: 100
+        last_name_ar:
+          type: string
+          maxLength: 100
+        phone:
+          type: string
+          maxLength: 32
+        email:
+          type: string
+          format: email
+          maxLength: 254
+      required:
+      - first_name_ar
+      - id
+      - last_name_ar
+      - phone
+    LibraryCopy:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        barcode:
+          type: string
+          maxLength: 50
+        status:
+          type: string
+          maxLength: 20
+        title:
+          type: string
+          format: uuid
+      required:
+      - barcode
+      - id
+      - title
+    LibraryLoan:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        issued_on:
+          type: string
+          format: date
+        due_on:
+          type: string
+          format: date
+        returned_on:
+          type: string
+          format: date
+          nullable: true
+        copy:
+          type: string
+          format: uuid
+        borrower_student:
+          type: string
+          format: uuid
+          nullable: true
+        borrower_staff:
+          type: string
+          format: uuid
+          nullable: true
+      required:
+      - copy
+      - due_on
+      - id
+      - issued_on
+    LibraryTitle:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        isbn:
+          type: string
+          maxLength: 20
+        title:
+          type: string
+          maxLength: 300
+        author:
+          type: string
+          maxLength: 300
+      required:
+      - id
+      - title
+    PatchedAppeal:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        reason:
+          type: string
+        decision:
+          type: string
+        enrollment:
+          type: string
+          format: uuid
+        exam:
+          type: string
+          format: uuid
+    PatchedAttendanceRecord:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        date:
+          type: string
+          format: date
+        period:
+          type: integer
+          maximum: 32767
+          minimum: -32768
+        status:
+          $ref: '#/components/schemas/StatusEnum'
+        note:
+          type: string
+        enrollment:
+          type: string
+          format: uuid
+    PatchedBehaviorIncident:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        date:
+          type: string
+          format: date
+        period:
+          type: integer
+          maximum: 32767
+          minimum: -32768
+          nullable: true
+        place:
+          type: string
+          maxLength: 120
+        category:
+          type: string
+          maxLength: 80
+        description:
+          type: string
+        student:
+          type: string
+          format: uuid
+    PatchedClassRoom:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        grade:
+          type: integer
+          maximum: 32767
+          minimum: -32768
+        section:
+          type: string
+          maxLength: 10
+        school:
+          type: string
+          format: uuid
+        year:
+          type: string
+          format: uuid
+    PatchedClinicVisit:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        date:
+          type: string
+          format: date
+        reason:
+          type: string
+          maxLength: 200
+        details_enc:
+          type: string
+          format: byte
+          readOnly: true
+          nullable: true
+        student:
+          type: string
+          format: uuid
+    PatchedEnrollment:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        grade:
+          type: integer
+          maximum: 32767
+          minimum: -32768
+        status:
+          type: string
+          maxLength: 20
+        student:
+          type: string
+          format: uuid
+        school:
+          type: string
+          format: uuid
+        year:
+          type: string
+          format: uuid
+        class_room:
+          type: string
+          format: uuid
+    PatchedExam:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          maxLength: 150
+        term_code:
+          type: string
+          maxLength: 10
+        subject:
+          type: string
+          format: uuid
+    PatchedExamResult:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        score:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,4}(?:\.\d{0,2})?$
+        enrollment:
+          type: string
+          format: uuid
+        exam:
+          type: string
+          format: uuid
+    PatchedGuardian:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        first_name_ar:
+          type: string
+          maxLength: 100
+        last_name_ar:
+          type: string
+          maxLength: 100
+        phone:
+          type: string
+          maxLength: 32
+        email:
+          type: string
+          format: email
+          maxLength: 254
+    PatchedLibraryCopy:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        barcode:
+          type: string
+          maxLength: 50
+        status:
+          type: string
+          maxLength: 20
+        title:
+          type: string
+          format: uuid
+    PatchedLibraryLoan:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        issued_on:
+          type: string
+          format: date
+        due_on:
+          type: string
+          format: date
+        returned_on:
+          type: string
+          format: date
+          nullable: true
+        copy:
+          type: string
+          format: uuid
+        borrower_student:
+          type: string
+          format: uuid
+          nullable: true
+        borrower_staff:
+          type: string
+          format: uuid
+          nullable: true
+    PatchedLibraryTitle:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        isbn:
+          type: string
+          maxLength: 20
+        title:
+          type: string
+          maxLength: 300
+        author:
+          type: string
+          maxLength: 300
+    PatchedRoom:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        code:
+          type: string
+          maxLength: 50
+        room_type:
+          type: string
+          maxLength: 50
+        capacity:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+        school:
+          type: string
+          format: uuid
+    PatchedRoute:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        code:
+          type: string
+          maxLength: 50
+        capacity:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+    PatchedSchool:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        name_ar:
+          type: string
+          maxLength: 200
+        name_en:
+          type: string
+          maxLength: 200
+        moehe_code:
+          type: string
+          maxLength: 50
+    PatchedStaff:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        first_name_ar:
+          type: string
+          maxLength: 100
+        last_name_ar:
+          type: string
+          maxLength: 100
+        job_title:
+          type: string
+          maxLength: 120
+        email:
+          type: string
+          format: email
+          maxLength: 254
+    PatchedStudent:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        first_name_ar:
+          type: string
+          maxLength: 100
+        last_name_ar:
+          type: string
+          maxLength: 100
+        first_name_en:
+          type: string
+          maxLength: 100
+        last_name_en:
+          type: string
+          maxLength: 100
+        national_id:
+          type: string
+          nullable: true
+          maxLength: 32
+        birth_date:
+          type: string
+          format: date
+        gender:
+          $ref: '#/components/schemas/GenderEnum'
+        phone:
+          type: string
+          maxLength: 32
+        email:
+          type: string
+          format: email
+          maxLength: 254
+    PatchedStudentRider:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        student:
+          type: string
+          format: uuid
+        route:
+          type: string
+          format: uuid
+    PatchedSubject:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        name_ar:
+          type: string
+          maxLength: 200
+        name_en:
+          type: string
+          maxLength: 200
+    PatchedTerm:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        code:
+          type: string
+          maxLength: 10
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+          format: date
+        year:
+          type: string
+          format: uuid
+    PatchedTimetableSlot:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        day_of_week:
+          type: integer
+          maximum: 32767
+          minimum: -32768
+        period:
+          type: integer
+          maximum: 32767
+          minimum: -32768
+        class_room:
+          type: string
+          format: uuid
+        subject:
+          type: string
+          format: uuid
+        teacher:
+          type: string
+          format: uuid
+        room:
+          type: string
+          format: uuid
+          nullable: true
+    PatchedYear:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        label:
+          type: string
+          maxLength: 20
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+          format: date
+        school:
+          type: string
+          format: uuid
+    Room:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        code:
+          type: string
+          maxLength: 50
+        room_type:
+          type: string
+          maxLength: 50
+        capacity:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+        school:
+          type: string
+          format: uuid
+      required:
+      - code
+      - id
+      - room_type
+      - school
+    Route:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        code:
+          type: string
+          maxLength: 50
+        capacity:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+      required:
+      - code
+      - id
+    School:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        name_ar:
+          type: string
+          maxLength: 200
+        name_en:
+          type: string
+          maxLength: 200
+        moehe_code:
+          type: string
+          maxLength: 50
+      required:
+      - id
+      - moehe_code
+      - name_ar
+    Staff:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        first_name_ar:
+          type: string
+          maxLength: 100
+        last_name_ar:
+          type: string
+          maxLength: 100
+        job_title:
+          type: string
+          maxLength: 120
+        email:
+          type: string
+          format: email
+          maxLength: 254
+      required:
+      - first_name_ar
+      - id
+      - job_title
+      - last_name_ar
+    StatusEnum:
+      enum:
+      - present
+      - absent
+      - late
+      - excused
+      type: string
+      description: |-
+        * `present` - حاضر
+        * `absent` - غائب
+        * `late` - متأخر
+        * `excused` - معذور
+    Student:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        first_name_ar:
+          type: string
+          maxLength: 100
+        last_name_ar:
+          type: string
+          maxLength: 100
+        first_name_en:
+          type: string
+          maxLength: 100
+        last_name_en:
+          type: string
+          maxLength: 100
+        national_id:
+          type: string
+          nullable: true
+          maxLength: 32
+        birth_date:
+          type: string
+          format: date
+        gender:
+          $ref: '#/components/schemas/GenderEnum'
+        phone:
+          type: string
+          maxLength: 32
+        email:
+          type: string
+          format: email
+          maxLength: 254
+      required:
+      - birth_date
+      - first_name_ar
+      - gender
+      - id
+      - last_name_ar
+    StudentRider:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        student:
+          type: string
+          format: uuid
+        route:
+          type: string
+          format: uuid
+      required:
+      - id
+      - route
+      - student
+    Subject:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        name_ar:
+          type: string
+          maxLength: 200
+        name_en:
+          type: string
+          maxLength: 200
+      required:
+      - id
+      - name_ar
+    Term:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        code:
+          type: string
+          maxLength: 10
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+          format: date
+        year:
+          type: string
+          format: uuid
+      required:
+      - code
+      - end_date
+      - id
+      - start_date
+      - year
+    TimetableSlot:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        day_of_week:
+          type: integer
+          maximum: 32767
+          minimum: -32768
+        period:
+          type: integer
+          maximum: 32767
+          minimum: -32768
+        class_room:
+          type: string
+          format: uuid
+        subject:
+          type: string
+          format: uuid
+        teacher:
+          type: string
+          format: uuid
+        room:
+          type: string
+          format: uuid
+          nullable: true
+      required:
+      - class_room
+      - day_of_week
+      - id
+      - period
+      - subject
+      - teacher
+    TokenObtainPair:
+      type: object
+      properties:
+        username:
+          type: string
+          writeOnly: true
+        password:
+          type: string
+          writeOnly: true
+        access:
+          type: string
+          readOnly: true
+        refresh:
+          type: string
+          readOnly: true
+      required:
+      - access
+      - password
+      - refresh
+      - username
+    TokenRefresh:
+      type: object
+      properties:
+        access:
+          type: string
+          readOnly: true
+        refresh:
+          type: string
+          writeOnly: true
+      required:
+      - access
+      - refresh
+    Year:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        label:
+          type: string
+          maxLength: 20
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+          format: date
+        school:
+          type: string
+          format: uuid
+      required:
+      - end_date
+      - id
+      - label
+      - school
+      - start_date
+  securitySchemes:
+    jwtAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

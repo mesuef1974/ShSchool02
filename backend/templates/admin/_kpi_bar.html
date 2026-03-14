@@ -1,0 +1,22 @@
+{# templates/admin/_kpi_bar.html #}
+<style>
+  .kpi-bar{
+    direction: rtl; text-align: right; display:grid;
+    grid-template-columns: repeat(5, minmax(180px,1fr));
+    gap: 10px; margin: 6px 0 14px;
+  }
+  .kpi{ background:#fff; border:1px solid #e6e6e6; border-radius:12px; padding:12px; box-shadow: 0 2px 6px rgba(0,0,0,.05); }
+  .kpi .label{ font-size:12px; color:#667085; margin:0 0 6px; }
+  .kpi .value{ font-size:20px; font-weight:800; color:#111; }
+  @media (max-width: 1100px){ .kpi-bar{ grid-template-columns: repeat(3,1fr);} }
+  @media (max-width: 700px){ .kpi-bar{ grid-template-columns: repeat(2,1fr);} }
+  @media (max-width: 480px){ .kpi-bar{ grid-template-columns: 1fr;} }
+</style>
+
+<div class="kpi-bar">
+  <div class="kpi"><div class="label">الطلاب</div><div class="value">{{ kpi.students|default:0 }}</div></div>
+  <div class="kpi"><div class="label">الموظفون</div><div class="value">{{ kpi.staff|default:0 }}</div></div>
+  <div class="kpi"><div class="label">حضور اليوم</div><div class="value">{{ kpi.att_today|default:0 }}</div></div>
+  <div class="kpi"><div class="label">الوقائع اليوم</div><div class="value">{{ kpi.incidents_today|default:0 }}</div></div>
+  <div class="kpi"><div class="label">إعارات نشطة</div><div class="value">{{ kpi.loans_active|default:0 }}</div></div>
+</div>
