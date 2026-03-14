@@ -1,23 +1,7 @@
 
 -- جدول auth_user مبسّط (متوافق اسميًا مع مراجع FK في v1)
-CREATE TABLE IF NOT EXISTS auth_user (
-    id SERIAL PRIMARY KEY,
-    username       VARCHAR(150) UNIQUE NOT NULL,
-    first_name     VARCHAR(150) NOT NULL DEFAULT '',
-    last_name      VARCHAR(150) NOT NULL DEFAULT '',
-    email          VARCHAR(254) NOT NULL DEFAULT '',
-    is_staff       BOOLEAN NOT NULL DEFAULT FALSE,
-    is_active      BOOLEAN NOT NULL DEFAULT TRUE,
-    is_superuser   BOOLEAN NOT NULL DEFAULT FALSE,
-    password       VARCHAR(128) NOT NULL DEFAULT '',
-    last_login     TIMESTAMP WITH TIME ZONE,
-    date_joined    TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW()
-);
 
 -- مستخدم مبدئي اختياري لتجارب الإدخال السريع
-INSERT INTO auth_user (username, email, is_staff, is_superuser, password)
-VALUES ('admin', 'admin@example.com', TRUE, TRUE, '09041974') 
-ON CONFLICT (username) DO NOTHING;
 
 
 -- ============================================================================
