@@ -56,10 +56,10 @@ INSTALLED_APPS = [
     # =====================
     # 3rd‑party packages
     # =====================
-    "rest_framework",
-    "django_filters",
-    "drf_spectacular",
-    "django_extensions",  # ⭐ لإضافة أوامر مثل show_urls
+    "rest_framework",          # DRF
+    "django_filters",          # django-filters
+    "drf_spectacular",         # OpenAPI schema
+    # "django_extensions",     # سيُضاف اختياريًا بالأسفل لو متاح
 
     # =====================
     # Shahania School Apps (AppConfig Arabic)
@@ -75,7 +75,21 @@ INSTALLED_APPS = [
     "apps.library.apps.LibraryConfig",
     "apps.refdata.apps.RefdataConfig",
     "apps.identity.apps.IdentityConfig",
+
+    # 🔽 تمت إضافتها لتظهر النماذج الجديدة في لوحة الإدارة
+    "apps.assets.apps.AssetsConfig",
+    "apps.comms.apps.CommsConfig",
+    "apps.quality.apps.QualityConfig",
+    "apps.audit.apps.AuditConfig",
+    "apps.hr_school.apps.HrSchoolConfig",
 ]
+
+# ➕ اجعل django_extensions اختياريًا (لا يوقف المشروع إن لم تُثبّت الحزمة)
+try:
+    import django_extensions  # noqa: F401
+    INSTALLED_APPS.append("django_extensions")
+except Exception:
+    pass
 
 # =========================
 # الوسائط (Middleware)
@@ -84,11 +98,9 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",  # ⭐ لخدمة static مع DEBUG=False
-
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.locale.LocaleMiddleware",   # لدعم تعدد اللغات/الاتجاه RTL
     "django.middleware.common.CommonMiddleware",
-
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
@@ -104,22 +116,20 @@ TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [BASE_DIR / "templates"],  # مسار قوالب المشروع (ضع فيه templates/admin/index.html)
-        "APP_DIRS": True,                  # مهم لتحميل قوالب Django الافتراضية (admin/templates)
+        "APP_DIRS": True,  # مهم لتحميل قوالب Django الافتراضية (admin/templates)
         "OPTIONS": {
             "context_processors": [
                 "django.template.context_processors.debug",
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-
                 # اختياري (مفيد للوصول إلى STATIC_URL و MEDIA_URL داخل القوالب)
                 "django.template.context_processors.static",
                 "django.template.context_processors.media",
-
                 # ⭐ يمرّر ADMIN_APP_ORDER و ADMIN_APP_COLORS للقوالب
                 "backend.context_processors.admin_ui_settings",
             ],
-            # "builtins": [],  # إن أردت تحميل مكتبات template tags تلقائيًا (غير ضروري الآن)
+            # "builtins": [], # إن أردت تحميل مكتبات template tags تلقائيًا (غير ضروري الآن)
         },
     }
 ]
@@ -217,21 +227,28 @@ ADMIN_APP_ORDER = [
     "identity", "people", "attendance", "timetable",
     "assessment", "behavior", "health", "transport",
     "library", "refdata", "auth", "core",
+    # بإمكانك ترتيب الجديدة كذلك:
+    "assets", "comms", "quality", "audit", "hr_school",
 ]
 
 ADMIN_APP_COLORS = {
-    "identity":   "#8A1538",  # ماروني (Al Adaam)
-    "people":     "#59D3A0",  # أخضر فاتح
-    "attendance": "#61B5F5",  # أزرق فاتح
-    "timetable":  "#8A1538",
+    "identity": "#8A1538",   # ماروني (Al Adaam)
+    "people": "#59D3A0",     # أخضر فاتح
+    "attendance": "#61B5F5", # أزرق فاتح
+    "timetable": "#8A1538",
     "assessment": "#59D3A0",
-    "behavior":   "#61B5F5",
-    "health":     "#8A1538",
-    "transport":  "#59D3A0",
-    "library":    "#61B5F5",
-    "refdata":    "#8A1538",
-    "auth":       "#999999",
-    "core":       "#999999",
+    "behavior": "#61B5F5",
+    "health": "#8A1538",
+    "transport": "#59D3A0",
+    "library": "#61B5F5",
+    "refdata": "#8A1538",
+    "auth": "#999999",
+    "core": "#999999",
+    "assets": "#59D3A0",
+    "comms": "#61B5F5",
+    "quality": "#8A1538",
+    "audit": "#999999",
+    "hr_school": "#59D3A0",
 }
 
 # =========================

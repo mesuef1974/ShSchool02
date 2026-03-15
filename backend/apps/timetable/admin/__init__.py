@@ -1,0 +1,2 @@
+from .timetablerule_admin import TimetableRuleAdmin
+from .timetableslot_admin import TimetableSlotAdmin

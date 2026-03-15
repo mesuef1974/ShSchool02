@@ -1,0 +1,2 @@
+from .clinicvisit_admin import ClinicVisitAdmin
+from .medicationlog_admin import MedicationLogAdmin

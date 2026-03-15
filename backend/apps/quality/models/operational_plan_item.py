@@ -1,0 +1,28 @@
+from django.db import models
+
+class QualityOperationalPlanItem(models.Model):
+    id = models.UUIDField(primary_key=True, editable=False)
+    year = models.CharField(max_length=20)
+    domain = models.CharField(max_length=200, null=True, blank=True)
+    target_no = models.CharField(max_length=40, null=True, blank=True)
+    target = models.TextField(null=True, blank=True)
+    indicator_no = models.CharField(max_length=60, null=True, blank=True)
+    indicator = models.TextField(null=True, blank=True)
+    procedure_no = models.CharField(max_length=60, null=True, blank=True)
+    procedure = models.TextField(null=True, blank=True)
+    date_range = models.CharField(max_length=120, null=True, blank=True)
+    follow_up = models.TextField(null=True, blank=True)
+    comments = models.TextField(null=True, blank=True)
+    evidence_type = models.CharField(max_length=120, null=True, blank=True)
+    evidence_source_employee = models.CharField(max_length=200, null=True, blank=True)
+    evidence_source_file = models.CharField(max_length=300, null=True, blank=True)
+    evaluation = models.CharField(max_length=200, null=True, blank=True)
+    evaluation_notes = models.TextField(null=True, blank=True)
+    status = models.CharField(max_length=40, default='In Progress')
+    executor_committee_id = models.UUIDField(null=True, blank=True)
+    evaluator_committee_id = models.UUIDField(null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    deleted_at = models.DateTimeField(null=True, blank=True)
+    row_version = models.IntegerField(default=1)
+

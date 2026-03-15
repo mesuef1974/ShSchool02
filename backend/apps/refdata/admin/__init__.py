@@ -1,0 +1,4 @@
+from .nationality_admin import NationalityAdmin
+from .religion_admin import ReligionAdmin
+from .absence_reason_admin import AbsenceReasonAdmin
+from .behavior_category_admin import BehaviorCategoryAdmin

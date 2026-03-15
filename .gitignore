@@ -9,3 +9,11 @@ media/  staticfiles/  .pytest_cache/  __pycache__/
 .tox/  .nox/
 logs/  tmp/  .DS_Store
 
+# استثناءات إضافية
+.env
+backend/**/migrations/
+*/migrations/
+*.xlsx
+*.csv
+.vscode/
+

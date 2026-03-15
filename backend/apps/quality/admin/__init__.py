@@ -1,0 +1,7 @@
+from .committee_admin import QualityCommitteeAdmin
+from .plan_executor_admin import QualityPlanExecutorAdmin
+from .operational_plan_item_admin import QualityOperationalPlanItemAdmin
+from .opi_executor_admin import QualityOpiExecutorAdmin
+from .evidence_admin import QualityEvidenceAdmin
+from .improvement_plan_admin import QualityImprovementPlanAdmin
+from .kpi_snapshot_admin import QualityKpiSnapshotAdmin

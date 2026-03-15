@@ -1,0 +1,3 @@
+from .behaviorincident_admin import BehaviorIncidentAdmin
+from .committee_admin import BehaviorCommitteeAdmin
+from .sanction_admin import BehaviorSanctionAdmin
