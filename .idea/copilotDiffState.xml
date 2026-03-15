@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CopilotDiffPersistence">
+    <option name="pendingDiffs">
+      <map>
+        <entry key="$PROJECT_DIR$/backend/apps/assets/admin/maintenance_ticket_admin.py">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/backend/apps/assets/admin/maintenance_ticket_admin.py" />
+              <option name="updatedContent" value="from django.contrib import admin&#10;from apps.assets.models import MaintenanceTicket&#10;&#10;@admin.register(MaintenanceTicket)&#10;class MaintenanceTicketAdmin(admin.ModelAdmin):&#10;    list_display = (&quot;asset&quot;, &quot;type&quot;, &quot;priority&quot;, &quot;opened_on&quot;, &quot;closed_on&quot;)&#10;    search_fields = (&quot;asset__category&quot;, &quot;type&quot;, &quot;priority&quot;)&#10;    ordering = (&quot;opened_on&quot;, &quot;priority&quot;)&#10;" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/backend/apps/assets/models/__init__.py">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/backend/apps/assets/models/__init__.py" />
+              <option name="updatedContent" value="from .asset import Asset&#10;from .maintenance_ticket import MaintenanceTicket&#10;from .safety_certificate import SafetyCertificate&#10;&#10;__all__ = [&#10;    &quot;Asset&quot;,&#10;    &quot;MaintenanceTicket&quot;,&#10;    &quot;SafetyCertificate&quot;,&#10;]&#10;" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
