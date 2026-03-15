@@ -5,22 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a093a2ef-95a4-4dfc-a72f-12e42e3e6c8f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/copilotDiffState.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/apps/assessment/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/apps/audit/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/apps/behavior/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/apps/comms/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/apps/core/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/apps/health/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/apps/hr_school/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/apps/identity/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/apps/library/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/apps/quality/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/apps/refdata/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/apps/timetable/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/apps/transport/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/copilotDiffState.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/copilotDiffState.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/apps/core/admin/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/apps/core/admin/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/apps/comms/admin/announcement_admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/apps/comms/admin/announcement_admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/apps/comms/models/announcement.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/apps/comms/models/announcement.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/apps/core/models/classroom.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/apps/core/models/classroom.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/apps/core/models/grade.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/apps/core/models/grade.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/apps/core/models/room.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/apps/core/models/room.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/apps/core/models/school.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/apps/core/models/school.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/apps/core/models/subject.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/apps/core/models/subject.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/apps/core/models/term.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/apps/core/models/term.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/apps/core/models/year.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/apps/core/models/year.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/apps/identity/models/permission.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/apps/identity/models/permission.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/apps/identity/models/role.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/apps/identity/models/role.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/apps/quality/models/evidence.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/apps/quality/models/evidence.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/apps/transport/models/studentrider.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/apps/transport/models/studentrider.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +38,7 @@
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="959" />
+    <option name="cachedIndexableFilesCount" value="1056" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
@@ -82,37 +81,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Django Server.ShSchool02.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.gen.executor": "Run",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "ai.playground.ignore.import.keys.banner.in.settings": "true",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "django.template.preview.state": "SHOW_EDITOR_AND_PREVIEW",
-    "git-widget-placeholder": "backend",
-    "ignore.virus.scanning.warn.message": "true",
-    "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "D:/ShSchool02/backend/apps/behavior/admin",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "Settings.Markdown",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Django Server.ShSchool02.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.gen.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;ai.playground.ignore.import.keys.banner.in.settings&quot;: &quot;true&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR_AND_PREVIEW&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;backend&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/ShSchool02/backend/apps/behavior/admin&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;Settings.Markdown&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecapUselessUpdatesCounter">
-    <option name="suspendCountdown" value="8" />
+    <option name="suspendCountdown" value="6" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -171,6 +170,7 @@
       <updated>1773538623685</updated>
       <workItem from="1773538624759" duration="2399000" />
       <workItem from="1773541288341" duration="16817000" />
+      <workItem from="1773582718057" duration="2855000" />
     </task>
     <servers />
   </component>

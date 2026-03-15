@@ -1,17 +1,22 @@
+
+
 from django.db import models
+from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 
 class Grade(models.Model):
+    from django.utils.translation import gettext_lazy as _
     code = models.SmallIntegerField(
         primary_key=True,
-        verbose_name="رمز الصف"
+        verbose_name=_("رمز الصف")
     )
     label_ar = models.CharField(
-        "اسم الصف",
+        _("اسم الصف"),
         max_length=50
     )
     label_en = models.CharField(
-        "اسم الصف (إنجليزي)",
+        _("اسم الصف (إنجليزي)"),
         max_length=50
     )
 
@@ -19,6 +24,6 @@ class Grade(models.Model):
         return self.label_ar
 
     class Meta:
-        verbose_name = "صف"
-        verbose_name_plural = "الصفوف"
+        verbose_name = _("صف")
+        verbose_name_plural = _("الصفوف")
         ordering = ["code"]

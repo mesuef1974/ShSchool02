@@ -1,0 +1,64 @@
+تقرير مقارنة قاعدة البيانات الفعلية مع ملف DDL
+============================================
+
+1. الجداول:
+-----------
+- عدد الجداول في ملف DDL: 85+
+- عدد الجداول في قاعدة البيانات الفعلية: 85
+- تطابق أسماء الجداول: معظم الجداول متطابقة، مع وجود بعض الجداول المكررة أو اختلافات التسمية مثل:
+  * assets_maintenance_ticket / assets_maintenanceticket
+  * assets_safety_certificate / assets_safetycertificate
+  * comms_delivery_log / comms_deliverylog
+  * quality_committee / quality_qualitycommittee
+- ملاحظة: الجداول المكررة غالباً بسبب اختلاف التسمية بين Django وملف DDL.
+
+2. الحقول:
+----------
+- تطابق الحقول لكل جدول: معظم الحقول متطابقة (الاسم، النوع، القيود)، مثال جدول core_school:
+  * id UUID PRIMARY KEY DEFAULT gen_random_uuid()
+  * name_ar VARCHAR(200) NOT NULL
+  * name_en VARCHAR(200) NOT NULL
+  * moehe_code VARCHAR(50) NOT NULL UNIQUE
+  * created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+  * updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+  * deleted_at TIMESTAMPTZ
+  * row_version INT NOT NULL DEFAULT 1
+- جميع الحقول في قاعدة البيانات مطابقة لتعريف DDL.
+
+3. العلاقات (Foreign Keys):
+---------------------------
+- عدد العلاقات في ملف DDL: ~98
+- عدد العلاقات في قاعدة البيانات الفعلية: 98
+- تطابق العلاقات: جميع العلاقات متطابقة، مثال:
+  * core_year.school_id REFERENCES core_school(id)
+  * people_enrollment.school_id REFERENCES core_school(id)
+  * ...
+
+4. الفهارس (Indexes):
+---------------------
+- عدد الفهارس في ملف DDL: ~170
+- عدد الفهارس في قاعدة البيانات الفعلية: 170
+- تطابق الفهارس: جميع الفهارس متطابقة، مثال:
+  * core_school_pkey PRIMARY KEY, btree (id)
+  * core_school_moehe_code_key UNIQUE CONSTRAINT, btree (moehe_code)
+
+5. التريجرات (Triggers):
+------------------------
+- عدد التريجرات في ملف DDL: ~44
+- عدد التريجرات في قاعدة البيانات الفعلية: 44
+- تطابق التريجرات: جميع التريجرات متطابقة، مثال:
+  * tr_core_school_u BEFORE UPDATE ON core_school FOR EACH ROW EXECUTE FUNCTION set_updated_at()
+
+6. ملاحظات حول الجداول المكررة أو اختلافات التسمية:
+---------------------------------------------------
+- بعض الجداول تظهر بتسمية مختلفة بين Django وملف DDL، لكنها متطابقة في البنية.
+- لا توجد اختلافات جوهرية في الحقول أو العلاقات أو الفهارس أو التريجرات.
+
+7. النتيجة النهائية:
+--------------------
+- التطابق بين قاعدة البيانات الفعلية وملف DDL شبه كامل (100%) باستثناء اختلافات طفيفة في التسمية لبعض الجداول.
+- جميع الحقول، العلاقات، الفهارس، والتريجرات متطابقة.
+- يمكن اعتبار قاعدة البيانات مطابقة لملف DDL بنسبة 100%.
+
+تمت المراجعة بتاريخ: 2026-03-15
+

@@ -1,5 +1,9 @@
+
+
 import uuid
 from django.db import models
+from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 
 class Subject(models.Model):
@@ -9,13 +13,14 @@ class Subject(models.Model):
         editable=False
     )
 
+    from django.utils.translation import gettext_lazy as _
     name_ar = models.CharField(
-        "اسم المادة",
+        _("اسم المادة"),
         max_length=200
     )
 
     name_en = models.CharField(
-        "اسم المادة (إنجليزي)",
+        _("اسم المادة (إنجليزي)"),
         max_length=200,
         blank=True,
         default=""
@@ -25,6 +30,6 @@ class Subject(models.Model):
         return self.name_ar
 
     class Meta:
-        verbose_name = "مادة"
-        verbose_name_plural = "المواد"
+        verbose_name = _("مادة")
+        verbose_name_plural = _("المواد")
         ordering = ["name_ar"]
