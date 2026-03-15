@@ -1,2 +1,11 @@
 DOCS_mine/
+.venv/
+node_modules/
+.git/
+.idea/**/shelf/
+dist/  build/  out/  .cache/
+media/  staticfiles/  .pytest_cache/  __pycache__/
+.mypy_cache/  .ruff_cache/  .coverage/  coverage_html/
+.tox/  .nox/
+logs/  tmp/  .DS_Store
 
