@@ -4,6 +4,6 @@ django-filter==24.2
 python-dotenv==1.0.1
 drf-spectacular==0.27.2
 psycopg[binary]==3.1.18
-cryptography==42.0.5
+cryptography==46.0.6
 pydantic==2.6.4
 email-validator==2.1.0.post1
